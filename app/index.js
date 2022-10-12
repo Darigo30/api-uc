@@ -19,7 +19,7 @@ app.listen(port, () => {
 //Api
 app.get('/', async (req, res) => {
     const urlToken = `https://uc-cl.libwizard.com/api/v1/oauth/token`
-    const urlForm = `https://uc-cl.libwizard.com/api/v1/public/forms`
+    const urlForm = `https://uc-cl.libwizard.com/api/v1/public/submissions/117013`
 
     const credentials = {
         client_id: 44,
@@ -44,7 +44,17 @@ app.get('/', async (req, res) => {
                 "Content-Type": "application/json",
             }
         })
-        res.send(dataForm.data)
+
+        console.log("esta es la data", dataForm.data);
+
+        const mapData = dataForm.data.map((item) => {
+            return {
+                "star_rating": item.data[0].data,
+                "message": item.data[1].data,
+            }
+        })
+
+        res.send(mapData)
         return response.data;
 
     } catch (error) {
