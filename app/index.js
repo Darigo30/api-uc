@@ -44,16 +44,28 @@ app.get('/', async (req, res) => {
                 "Content-Type": "application/json",
             }
         })
-
         console.log("esta es la data", dataForm.data);
 
         const mapData = dataForm.data.map((item) => {
             return {
-                "star_rating": item.data[0].data,
+                "star_rating": item.data[0].data, 
                 "message": item.data[1].data,
             }
         })
 
+        //Función para obtener el promedio de las estrellas de los comentarios
+        const sumarStarRating = () => {
+            let sum = 0
+            for(let key in mapData){
+                sum += mapData[key].star_rating
+                console.log("key", mapData[key].star_rating);
+            }
+        }
+        sumarStarRating()
+
+        console.log("mapData", mapData);
+        console.log("mapData cantidad de mensajes", mapData.length);
+        
         res.send(mapData)
         return response.data;
 
