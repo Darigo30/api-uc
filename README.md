@@ -1,19 +1,18 @@
 # API UC 📌💻 JS NodeExpress
 
-Se construye esta API con el fin de traer data de los reportes en formularios de Libwizard con Node Js + Express. 😍
+Se construye esta API con el fin de traer data de los envios de todos los formularios de Libwizard con Node Js + Express. 😍
 
-![imagen](https://user-images.githubusercontent.com/39928174/195366475-518bbf50-4218-4b90-9b7b-81fd0d6a4241.png)
 
 ## Herramientas de desarrollo 🛠️
 Servidor:
-  ○ Node >= 6
+  ○ Node >= 16
   ○ Express
 ○ Axios
 ○ JS
 
 ### `node app/index.js` 🤓
 Ejecuta la aplicación en el modo de desarrollo.\
-Abre [http://localhost:8080](http://localhost:8080/) para visualizarlo en tu navegador.
+Abre [http://localhost:3001](http://localhost:3001/) para visualizarlo en tu navegador.
 
 
 ## Autora ✒️🙋‍♀️
