@@ -8,8 +8,8 @@ const app = express()
 app.use(cors())
 
 
-//Puerto 8080
-const port = process.env.PORT || 8080
+//Puerto 3001
+const port = process.env.PORT || 3001
 
 //Inicializa el servidor 3000
 app.listen(port, () => {
@@ -19,7 +19,7 @@ app.listen(port, () => {
 //Api
 app.get('/', async (req, res) => {
     const urlToken = `https://uc-cl.libwizard.com/api/v1/oauth/token`
-    const urlForm = `https://uc-cl.libwizard.com/api/v1/public/submissions/117013`
+    const urlForm = `https://uc-cl.libwizard.com/api/v1/public/content/forms`
 
     const credentials = {
         client_id: 44,
@@ -45,30 +45,23 @@ app.get('/', async (req, res) => {
             }
         })
         console.log("esta es la data", dataForm.data);
-
-        const mapData = dataForm.data.map((item) => {
-            return {
-                "star_rating": item.data[0].data, 
-                "message": item.data[1].data,
+        
+        //traer solo los sumSubmisions de cada formulario y sumar los valores
+        
+        const sub = dataForm.data.map((item) => {
+            return{
+                "item": item.submissions,
             }
         })
+        
+        const subSum = sub.reduce((acc, item) => acc + item.item, 0)
 
-        //Función para obtener el promedio de las estrellas de los comentarios
-        const sumarStarRating = () => {
-            let sum = 0
-            for(let key in mapData){
-                sum += mapData[key].star_rating
-                console.log("key", mapData[key].star_rating);
+        const sumDataForms = () =>{
+            return {
+                "sum" : subSum
             }
         }
-        sumarStarRating()
-
-        console.log("mapData", mapData);
-        console.log("mapData cantidad de mensajes", mapData.length);
-        
-        res.send(mapData)
-        return response.data;
-
+        res.send(sumDataForms())
     } catch (error) {
         console.error("Ha ocurrido un error al solicitar el token", error)
     }
