@@ -1,6 +1,6 @@
 # API UC 📌💻 JS NodeExpress
 
-Se construye esta API con el fin de traer data de los envios de todos los formularios de Libwizard con Node Js + Express. 😍
+Se construye esta API con el fin de mostrar el resultado de la suma todos los formularios de envio con Node Js + Express. 😍
 
 
 ## Herramientas de desarrollo 🛠️
